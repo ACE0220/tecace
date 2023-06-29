@@ -1,6 +1,6 @@
 {
   "name": "@tecace/ts-proto-batch",
-  "version": "0.0.11",
+  "version": "0.0.12",
   "description": "Batch convert proto files to typescript files",
   "main": "dist/index.cjs.js",
   "files": [
@@ -13,8 +13,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/ACE0220/tecace.git",
-    "directory": "ts-proto-batch"
+    "url": "https://github.com/ACE0220/tecace.git"
   },
   "bugs": {
     "url": "https://github.com/ACE0220/tecace/issues"

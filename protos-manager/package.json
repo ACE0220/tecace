@@ -1,6 +1,6 @@
 {
   "name": "@tecace/protos-manager",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "多服务间的proto解决方案，通过npm或git进行管理，支持基于proto文件生成对应类型",
   "author": "ace0220",
   "license": "MIT",
@@ -15,6 +15,13 @@
     "package.json",
     "README.md"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ACE0220/tecace.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ACE0220/tecace/issues"
+  },
   "scripts": {
     "test": "jest --config jest.config.ts",
     "test:debug": "jest --config jest.config.ts --debug",

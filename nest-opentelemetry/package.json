@@ -1,6 +1,6 @@
 {
   "name": "@tecace/nest-opentelemetry",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "基于官方 npm 封装 nest-opentelemetry 工具，无侵入式劫持 controller/provider，提供装饰器手动劫持非 nestjs 代码、忽略采集，自动上报 traces 和 metrics",
   "author": "ace0220",
   "main": "dist/index.js",
@@ -14,6 +14,13 @@
     "package.json",
     "README.md"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ACE0220/tecace.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ACE0220/tecace/issues"
+  },
   "license": "MIT",
   "scripts": {
     "build": "nest build",
