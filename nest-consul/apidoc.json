@@ -1,0 +1,6 @@
+{
+  "name": "nest-consul",
+  "version": "0.0.1",
+  "description": "nest-consul api",
+  "order": ["import", "new"]
+}
