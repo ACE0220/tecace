@@ -1,0 +1,19 @@
+{
+  "include": ["./src/**/*.ts", "types-loader.cjs"],
+  "exclude": ["**/node_modules", "**/tests/**/*"],
+  "compilerOptions": {
+    "target": "es2018",
+    "module": "es2020",
+    "moduleResolution": "node",
+    "lib": ["es2018"],
+    "esModuleInterop": true,
+    "declaration": false,
+    "noEmit": true,
+    "outDir": "dist",
+    "baseUrl": "./src",
+    "resolveJsonModule": true,
+    "skipLibCheck": true,
+    "rootDir": "./",
+    "esModuleInterop": true
+  }
+}
