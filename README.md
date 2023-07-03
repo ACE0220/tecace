@@ -16,3 +16,5 @@
 | @tecace/nest-opentelemetry | 基于官方 openetelemetry系列 封装 nest-opentelemetry 工具，无侵入式劫持 controller/provider，提供装饰器手动劫持非 nestjs 代码、忽略采集，自动上报 traces 和 metrics | nest-opentelemetry  |
 | @tecace/protos-manager | 多服务间的proto解决方案，通过npm或git进行管理，支持基于proto文件生成对应类型（包内proto文件是内部使用，如果需要请自行clone，放入proto文件，执行对应脚本） | protos-manager  |
 | @tecace/ts-proto-batch | 批量转换proto file至typescript file | ts-proto-batch  |
+| @tecace/ace-cli | 脚手架工具 | ace-cli  |
+| @tecace/cli-templates-* | 项目模板 | ace-cli-templates  |

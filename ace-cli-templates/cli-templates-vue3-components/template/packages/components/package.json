@@ -1,0 +1,23 @@
+{
+  "name": "<%= projectName %>-comps",
+  "version": "1.0.0",
+  "description": "all components are settled here",
+  "main": "dist/es/index.mjs",
+  "module": "dist/es/index.mjs",
+  "scripts": {
+    "clean": "rimraf dist",
+    "build": "pnpm clean && vite build"
+  },
+  "files": ["dist", "components.d.ts", "package.json"],
+  "keywords": [],
+  "author": "",
+  "license": "MIT", 
+  "peerDependencies": {
+    "vue": "^3.2.36"
+  },
+  "types": "dist/es/index.d.ts",
+  "dependencies": {
+    "<%= projectName %>-theme-chalk": "^1.0.0",
+    "<%= projectName %>-utils": "^1.0.0"
+  }
+}

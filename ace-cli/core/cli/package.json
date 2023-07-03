@@ -1,0 +1,57 @@
+{
+  "name": "@tecace/ace-cli",
+  "version": "0.0.5",
+  "description": "cli核心模块",
+  "keywords": [],
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ACE0220/tecace.git"
+  },
+  "author": "ace0220",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ACE0220/tecace/issues"
+  },
+  "homepage": "https://github.com/ACE0220/tecace#readme",
+  "scripts": {
+    "gen:type": "tsc -p tsconfig.types.json",
+    "copybin": "cp ./src/bin.js ./dist/cjs/",
+    "dev": "tsc -p tsconfig.types.json && rollup -c --bundleConfigAsCjs --watch && pnpm copybin && npm link ",
+    "build": "rimraf dist && pnpm gen:type && rollup -c --bundleConfigAsCjs && pnpm copybin",
+    "publish": "npm publish"
+  },
+  "files": [
+    "dist",
+    "package.json",
+    "README.md"
+  ],
+  "bin": {
+    "ace-cli": "./dist/cjs/bin.js"
+  },
+  "dependencies": {
+    "@rollup/plugin-alias": "^5.0.0",
+    "@tecace/ace-log": "^0.0.4",
+    "@tecace/command-exec": "^0.0.5",
+    "@tecace/npm-info": "^0.0.4",
+    "colorette": "^2.0.20",
+    "commander": "^11.0.0",
+    "dotenv": "^16.3.1",
+    "import-local": "^3.1.0",
+    "root-check": "1.0.0",
+    "userdir": "^1.0.0"
+  },
+  "devDependencies": {
+    "@rollup/plugin-json": "^6.0.0",
+    "@rollup/plugin-replace": "^5.0.2",
+    "@types/import-local": "^3.1.0",
+    "@types/node": "18.16.17",
+    "@types/root-check": "^1.0.0",
+    "rollup-plugin-paths": "^0.0.4"
+  },
+  "engines": {
+    "node": ">= 18.16.1 < 19.0.0"
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "name": "@tecace/model-pkg",
+  "version": "0.0.4",
+  "description": "package抽象类",
+  "keywords": [],
+  "main": "dist/cjs/index.js",
+  "module": "dist/es/index.js",
+  "types": "dist/types/src/index.d.ts",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ACE0220/tecace.git"
+  },
+  "author": "ace0220",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ACE0220/tecace/issues"
+  },
+  "homepage": "https://github.com/ACE0220/tecace#readme",
+  "scripts": {
+    "gen:type": "tsc -p tsconfig.types.json",
+    "dev": "tsc -p tsconfig.types.json && npm link && rollup -c --bundleConfigAsCjs --watch",
+    "build": "rimraf dist && pnpm gen:type && rollup -c --bundleConfigAsCjs",
+    "publish": "npm publish"
+  },
+  "files": [
+    "dist",
+    "package.json",
+    "README.md"
+  ],
+  "engines": {
+    "node": ">= 18.16.1 < 19.0.0"
+  },
+  "dependencies": {
+    "@tecace/ace-log": "^0.0.4",
+    "@tecace/npm-info": "^0.0.4",
+    "@tecace/path": "^0.0.4",
+    "npminstall": "^7.9.0",
+    "pkg-dir": "4.2.0"
+  }
+}
