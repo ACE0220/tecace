@@ -1,7 +1,7 @@
 {
-  "name": "@tecace/command-init",
-  "version": "0.0.6",
-  "description": "init 命令业务逻辑",
+  "name": "@tecace/command-clean",
+  "version": "0.0.4",
+  "description": "clean 清除缓存逻辑",
   "keywords": [],
   "main": "dist/cjs/index.js",
   "module": "dist/es/index.js",
@@ -36,17 +36,8 @@
   "dependencies": {
     "@tecace/ace-log": "^0.0.6",
     "@tecace/model-command": "^0.0.6",
-    "@tecace/model-pkg": "^0.0.6",
-    "@tecace/npm-info": "^0.0.6",
-    "ejs": "^3.1.9",
-    "fs": "0.0.1-security",
-    "fs-extra": "^11.1.1",
-    "glob": "^10.3.1",
-    "inquirer": "8.2.5"
-  },
-  "devDependencies": {
-    "@types/ejs": "^3.1.2",
-    "@types/fs-extra": "^11.0.1",
-    "@types/inquirer": "^8.2.5"
+    "mkdirp": "^3.0.1",
+    "rimraf": "^5.0.1",
+    "userdir": "1.0.0"
   }
 }

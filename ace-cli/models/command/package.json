@@ -1,6 +1,6 @@
 {
   "name": "@tecace/model-command",
-  "version": "0.0.4",
+  "version": "0.0.6",
   "description": "命令包的抽象类",
   "keywords": [],
   "main": "dist/cjs/index.js",
@@ -34,7 +34,7 @@
     "node": ">= 18.16.1 < 19.0.0"
   },
   "dependencies": {
-    "@tecace/ace-log": "^0.0.4",
-    "@tecace/npm-info": "^0.0.4"
+    "@tecace/ace-log": "^0.0.6",
+    "@tecace/npm-info": "^0.0.6"
   }
 }

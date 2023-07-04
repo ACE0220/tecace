@@ -1,6 +1,6 @@
 {
   "name": "@tecace/path",
-  "version": "0.0.4",
+  "version": "0.0.6",
   "description": "基于fs-extra, path-exists集成的路径判断工具",
   "keywords": [],
   "main": "dist/cjs/index.js",

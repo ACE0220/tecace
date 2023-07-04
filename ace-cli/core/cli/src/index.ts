@@ -27,7 +27,7 @@ function createDefaultConfig() {
   if (!process.env.CLI_HOME_PATH) {
     process.env.CLI_HOME_PATH = path.join(userhome, '.ace-cli');
   } else {
-    process.env.CLI_HOME_PATH = path.join(userhome, process.env.HOME_PATH);
+    process.env.CLI_HOME_PATH = path.join(userhome, process.env.CLI_HOME_PATH);
   }
   aceLog.log('info', `Home path: ${process.env.CLI_HOME_PATH}`);
 }
@@ -77,6 +77,20 @@ async function checkUpdate() {
   }
 }
 
+function getExtendCommands() {
+  const commands = [];
+  for (const key in process.env) {
+    if (key.includes('COMMANDS_')) {
+      commands.push({
+        commandFlag: key,
+        commandValue: process.env[key].split(','),
+      });
+    }
+  }
+
+  return commands;
+}
+
 async function prepare() {
   printCliVersion();
   checkEnv();
@@ -103,6 +117,16 @@ async function registerCommand() {
     .command('init [projectName]')
     .option('-f, --force', 'force init project', false)
     .action(exec as any);
+
+  // regisration extend command
+  const extendCommands = getExtendCommands();
+  extendCommands.forEach((cmdObj: any) => {
+    const [commandName, commandDesc] = cmdObj.commandValue;
+    program
+      .command(commandName)
+      .description(commandDesc)
+      .action(exec as any);
+  });
 
   // monitor --debug option
   program.on('option:debug', function () {
