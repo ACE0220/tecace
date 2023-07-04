@@ -1,0 +1,46 @@
+{
+  "name": "@tecace/npm-info",
+  "version": "0.0.4",
+  "description": "基于semver和axios集成的npm工具，主要用于npm的版本对比，版本获取等",
+  "keywords": [],
+  "main": "dist/cjs/index.js",
+  "module": "dist/es/index.js",
+  "types": "dist/types/src/index.d.ts",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ACE0220/tecace.git"
+  },
+  "author": "ace0220",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ACE0220/tecace/issues"
+  },
+  "homepage": "https://github.com/ACE0220/tecace#readme",
+  "scripts": {
+    "gen:type": "tsc -p tsconfig.types.json",
+    "dev": "tsc -p tsconfig.types.json && npm link && rollup -c --bundleConfigAsCjs --watch",
+    "build": "rimraf dist && pnpm gen:type && rollup -c --bundleConfigAsCjs",
+    "publish": "npm publish"
+  },
+  "files": [
+    "dist",
+    "package.json",
+    "README.md"
+  ],
+  "dependencies": {
+    "@tecace/ace-log": "^0.0.4",
+    "@tecace/request": "^0.0.4",
+    "@tecace/spinner": "^0.0.4",
+    "axios": "^1.4.0",
+    "semver": "^7.5.3"
+  },
+  "engines": {
+    "node": ">= 18.16.1 < 19.0.0"
+  },
+  "devDependencies": {
+    "@types/semver": "^7.5.0"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "exclude": ["**/dist", "node_modules"],
+  "compilerOptions": {
+    "target": "ES2018",
+    "module": "ESNext",
+    "moduleResolution": "Node",
+    "lib": ["ES2018"],
+    "esModuleInterop": true,
+    "declaration": false,
+    "noEmit": true,
+    "resolveJsonModule": true,
+    "skipLibCheck": true,
+    "outDir": "dist",
+    "rootDir": "./",
+    "baseUrl": "./"
+  }
+}

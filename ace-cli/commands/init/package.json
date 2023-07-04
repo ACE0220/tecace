@@ -1,0 +1,52 @@
+{
+  "name": "@tecace/command-init",
+  "version": "0.0.4",
+  "description": "init 命令业务逻辑",
+  "keywords": [],
+  "main": "dist/cjs/index.js",
+  "module": "dist/es/index.js",
+  "types": "dist/types/src/index.d.ts",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ACE0220/tecace.git"
+  },
+  "author": "ace0220",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ACE0220/tecace/issues"
+  },
+  "homepage": "https://github.com/ACE0220/tecace#readme",
+  "scripts": {
+    "gen:type": "tsc -p tsconfig.types.json",
+    "dev": "tsc -p tsconfig.types.json && npm link && rollup -c --bundleConfigAsCjs --watch",
+    "build": "rimraf dist && pnpm gen:type && rollup -c --bundleConfigAsCjs",
+    "publish": "npm publish"
+  },
+  "files": [
+    "dist",
+    "package.json",
+    "README.md"
+  ],
+  "engines": {
+    "node": ">= 18.16.1 < 19.0.0"
+  },
+  "dependencies": {
+    "@tecace/ace-log": "^0.0.4",
+    "@tecace/model-command": "^0.0.4",
+    "@tecace/model-pkg": "^0.0.4",
+    "@tecace/npm-info": "^0.0.4",
+    "ejs": "^3.1.9",
+    "fs": "0.0.1-security",
+    "fs-extra": "^11.1.1",
+    "glob": "^10.3.1",
+    "inquirer": "8.2.5"
+  },
+  "devDependencies": {
+    "@types/ejs": "^3.1.2",
+    "@types/fs-extra": "^11.0.1",
+    "@types/inquirer": "^8.2.5"
+  }
+}

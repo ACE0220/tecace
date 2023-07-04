@@ -1,0 +1,44 @@
+{
+  "name": "@tecace/request",
+  "version": "0.0.4",
+  "description": "基于axios封装的请求工具",
+  "keywords": [],
+  "main": "dist/cjs/index.js",
+  "module": "dist/es/index.js",
+  "types": "dist/types/src/index.d.ts",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ACE0220/tecace.git"
+  },
+  "author": "ace0220",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ACE0220/tecace/issues"
+  },
+  "homepage": "https://github.com/ACE0220/tecace#readme",
+  "scripts": {
+    "gen:type": "tsc -p tsconfig.types.json",
+    "dev": "tsc -p tsconfig.types.json && npm link && rollup -c --bundleConfigAsCjs --watch",
+    "build": "rimraf dist && pnpm gen:type && rollup -c --bundleConfigAsCjs",
+    "publish": "npm publish"
+  },
+  "files": [
+    "dist",
+    "package.json",
+    "README.md"
+  ],
+  "dependencies": {
+    "@tecace/ace-log": "^0.0.4",
+    "axios": "^1.4.0",
+    "md5": "^2.3.0"
+  },
+  "engines": {
+    "node": ">= 18.16.1 < 19.0.0"
+  },
+  "devDependencies": {
+    "@types/md5": "^2.3.2"
+  }
+}

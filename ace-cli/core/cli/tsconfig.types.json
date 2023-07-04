@@ -1,0 +1,12 @@
+{
+  "extends": "../../tsconfig.types.json",
+  "include": ["src/**/*.ts"],
+  "compilerOptions": {
+    "rootDir": "./",
+    "baseUrl": "./src",
+    "outDir": "dist",
+    "declarationDir": "dist/types",
+    "resolveJsonModule": true,
+    "typeRoots": ["./node_modules/@types", "./typings"]
+  }
+}

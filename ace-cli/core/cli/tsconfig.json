@@ -1,0 +1,15 @@
+{
+  "extends": "../../tsconfig.json",
+  "include": ["src/**/*.ts"],
+  "exclude": ["**/dist", "node_modules"],
+  "compilerOptions": {
+    "module": "ESNext",
+    "rootDir": "./",
+    "baseUrl": "./",
+    "resolveJsonModule": true,
+    "typeRoots": ["./node_modules/@types", "./typings"],
+    "paths": {
+      "pkg": ["./package.json"]
+    }
+  }
+}

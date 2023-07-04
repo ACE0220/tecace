@@ -1,0 +1,18 @@
+{
+  "name": "<%= projectName %>-utils",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/es/index.mjs",
+  "module": "dist/es/index.mjs",
+  "scripts": {
+    "clean": "rimraf dist",
+    "build": "pnpm clean && vite build"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/",
+    "access": "public"
+  }
+}
