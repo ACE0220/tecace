@@ -14,8 +14,21 @@ class ExecCommand extends Command {
   cliHomePath: string;
   cliStorePath: string;
   constructor(argv: ArrayLike<any>) {
-    aceLog.log('verbose', 'ExecCommand', 'constructor');
+    aceLog.log('verbose', 'ExecCommand', 'constructor', argv);
     super(argv);
+  }
+
+  getExtendCommands() {
+    const commands = [];
+    for (const key in process.env) {
+      if (key.includes('COMMANDS_')) {
+        commands.push({
+          commandFlag: key,
+          commandValue: process.env[key].split(','),
+        });
+      }
+    }
+    return commands;
   }
 
   /**
@@ -25,12 +38,40 @@ class ExecCommand extends Command {
    * or download the package from the npm registry and cache it to the local for use
    */
   init() {
-    aceLog.log('verbose', 'ExecCommand', 'init');
     const { cmdName } = this;
-    this.npmPackageName = cmdPkgMap[cmdName].npmPackageName;
-    this.npmPackageVersion = cmdPkgMap[cmdName].npmPackageVersion;
-    this.commandLocalPath = process.env.COMMAND_LOCAL_PATH;
     this.cliHomePath = process.env.CLI_HOME_PATH;
+    if (cmdPkgMap[cmdName]) {
+      this.commandLocalPath = process.env.COMMAND_LOCAL_PATH;
+      this.npmPackageName = cmdPkgMap[cmdName].npmPackageName;
+      this.npmPackageVersion = cmdPkgMap[cmdName].npmPackageVersion;
+    } else {
+      const commands = this.getExtendCommands();
+      let commandValue: [string, string, string, string];
+      commands.forEach((item) => {
+        if (item.commandValue.includes(cmdName)) {
+          commandValue = item.commandValue;
+        }
+      });
+      if (commandValue[2] === 'local') {
+        this.commandLocalPath = commandValue[3];
+      } else if (commandValue[2] === 'online') {
+        const pos = commandValue[3].lastIndexOf('@');
+        this.npmPackageName = commandValue[3].slice(0, pos);
+        this.npmPackageVersion = commandValue[3].slice(
+          pos + 1,
+          commandValue[3].length,
+        );
+      }
+    }
+    aceLog.log(
+      'verbose',
+      'ExecCommand',
+      'init',
+      `this.commandLocalPath:${this.commandLocalPath}`,
+      `this.cliHomePath:${this.cliHomePath}`,
+      `this.npmPackageName:${this.npmPackageName}`,
+      `this.npmPackageVersion:${this.npmPackageVersion}`,
+    );
   }
 
   /**
@@ -42,9 +83,7 @@ class ExecCommand extends Command {
     let pkg: Package = {} as Package;
     if (!this.commandLocalPath) {
       this.commandLocalPath = path.resolve(this.cliHomePath, 'dependencies');
-      aceLog.log('verbose', 'init commandLocalPath', this.commandLocalPath);
       this.cliStorePath = path.resolve(this.commandLocalPath, 'node_modules');
-      aceLog.log('verbose', 'init cliStorePath', this.cliStorePath);
       this.npmPackageVersion = await getNewtestVersion(this.npmPackageName);
       pkg = new Package({
         npmPackageName: this.npmPackageName,
@@ -52,6 +91,15 @@ class ExecCommand extends Command {
         commandLocalPath: this.commandLocalPath,
         cliStorePath: this.cliStorePath,
       });
+      aceLog.log(
+        'verbose',
+        'ExecCommand',
+        'exec',
+        `this.commandLocalPath:${this.commandLocalPath}`,
+        `this.cliHomePath:${this.cliHomePath}`,
+        `this.npmPackageName:${this.npmPackageName}`,
+        `this.npmPackageVersion:${this.npmPackageVersion}`,
+      );
       if (await pkg.exists()) {
         await pkg.update();
       } else {
@@ -65,7 +113,7 @@ class ExecCommand extends Command {
       });
     }
     const entryJs = await pkg.getEntryJsPath();
-    aceLog.log('verbose', 'ExecCommand', 'exec', entryJs);
+    aceLog.log('verbose', 'ExecCommand', 'exec', 'entryjs', entryJs);
     if (entryJs) {
       // eslint-disable-next-line @typescript-eslint/no-var-requires
       require(entryJs).call(null, ...this._argv);

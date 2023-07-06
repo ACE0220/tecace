@@ -1,6 +1,6 @@
 {
   "name": "@tecace/request",
-  "version": "0.0.4",
+  "version": "0.0.6",
   "description": "基于axios封装的请求工具",
   "keywords": [],
   "main": "dist/cjs/index.js",
@@ -31,7 +31,7 @@
     "README.md"
   ],
   "dependencies": {
-    "@tecace/ace-log": "^0.0.4",
+    "@tecace/ace-log": "^0.0.6",
     "axios": "^1.4.0",
     "md5": "^2.3.0"
   },

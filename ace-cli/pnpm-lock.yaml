@@ -54,34 +54,52 @@ importers:
         specifier: ^5.1.6
         version: 5.1.6
 
+  commands/clean:
+    dependencies:
+      '@tecace/ace-log':
+        specifier: ^0.0.4
+        version: link:../../utils/ace-log
+      '@tecace/model-command':
+        specifier: ^0.0.4
+        version: link:../../models/command
+      mkdirp:
+        specifier: ^3.0.1
+        version: 3.0.1
+      rimraf:
+        specifier: ^5.0.1
+        version: 5.0.1
+      userdir:
+        specifier: 1.0.0
+        version: 1.0.0(core-js@3.31.0)(tslib@2.6.0)
+
   commands/exec:
     dependencies:
       '@tecace/ace-log':
-        specifier: ^0.0.1
+        specifier: ^0.0.4
         version: link:../../utils/ace-log
       '@tecace/model-command':
-        specifier: ^0.0.1
+        specifier: ^0.0.4
         version: link:../../models/command
       '@tecace/model-pkg':
-        specifier: ^0.0.1
+        specifier: ^0.0.4
         version: link:../../models/pkg
       '@tecace/npm-info':
-        specifier: ^0.0.1
+        specifier: ^0.0.4
         version: link:../../utils/npm-info
 
   commands/init:
     dependencies:
       '@tecace/ace-log':
-        specifier: ^0.0.1
+        specifier: ^0.0.4
         version: link:../../utils/ace-log
       '@tecace/model-command':
-        specifier: ^0.0.1
+        specifier: ^0.0.4
         version: link:../../models/command
       '@tecace/model-pkg':
-        specifier: ^0.0.1
+        specifier: ^0.0.4
         version: link:../../models/pkg
       '@tecace/npm-info':
-        specifier: ^0.0.1
+        specifier: ^0.0.4
         version: link:../../utils/npm-info
       ejs:
         specifier: ^3.1.9
@@ -115,13 +133,13 @@ importers:
         specifier: ^5.0.0
         version: 5.0.0(rollup@3.25.3)
       '@tecace/ace-log':
-        specifier: ^0.0.1
+        specifier: ^0.0.4
         version: link:../../utils/ace-log
       '@tecace/command-exec':
-        specifier: ^0.0.1
+        specifier: ^0.0.5
         version: link:../../commands/exec
       '@tecace/npm-info':
-        specifier: ^0.0.1
+        specifier: ^0.0.4
         version: link:../../utils/npm-info
       colorette:
         specifier: ^2.0.20
@@ -164,22 +182,22 @@ importers:
   models/command:
     dependencies:
       '@tecace/ace-log':
-        specifier: ^0.0.1
+        specifier: ^0.0.4
         version: link:../../utils/ace-log
       '@tecace/npm-info':
-        specifier: ^0.0.1
+        specifier: ^0.0.4
         version: link:../../utils/npm-info
 
   models/pkg:
     dependencies:
       '@tecace/ace-log':
-        specifier: ^0.0.1
+        specifier: ^0.0.4
         version: link:../../utils/ace-log
       '@tecace/npm-info':
-        specifier: ^0.0.1
+        specifier: ^0.0.4
         version: link:../../utils/npm-info
       '@tecace/path':
-        specifier: ^0.0.1
+        specifier: ^0.0.4
         version: link:../../utils/path
       npminstall:
         specifier: ^7.9.0
@@ -207,13 +225,13 @@ importers:
   utils/npm-info:
     dependencies:
       '@tecace/ace-log':
-        specifier: ^0.0.1
+        specifier: ^0.0.4
         version: link:../ace-log
       '@tecace/request':
-        specifier: ^0.0.1
+        specifier: ^0.0.4
         version: link:../request
       '@tecace/spinner':
-        specifier: ^0.0.1
+        specifier: ^0.0.4
         version: link:../spinner
       axios:
         specifier: ^1.4.0
@@ -242,7 +260,7 @@ importers:
   utils/request:
     dependencies:
       '@tecace/ace-log':
-        specifier: ^0.0.1
+        specifier: ^0.0.4
         version: link:../ace-log
       axios:
         specifier: ^1.4.0
@@ -3339,6 +3357,12 @@ packages:
     hasBin: true
     dev: false
 
+  /mkdirp@3.0.1:
+    resolution: {integrity: sha512-+NsyUUAZDmo6YVHzL/stxSu3t9YS1iljliy3BSDrXJ/dkn1KYdmtZODGGjLcc9XLgVVpH4KshHB8XmZgMhaBXg==}
+    engines: {node: '>=10'}
+    hasBin: true
+    dev: false
+
   /moment@2.29.4:
     resolution: {integrity: sha512-5LC9SOxjSc2HF6vO2CyuTDNivEdoz2IvyJJGj6X8DJ0eFyfszE0QiEd+iXmBvUP3WHxSjFH/vIsA0EN00cgr8w==}
     dev: false
@@ -4090,7 +4114,6 @@ packages:
     hasBin: true
     dependencies:
       glob: 10.3.1
-    dev: true
 
   /rollup-plugin-paths@0.0.4:
     resolution: {integrity: sha512-BSX7MKzbF/6kFahkLyvpYwj7H1Iw1Swyf8+lK+kUrcTMDZLXncRusFeopPC2xv/8HcsapLmwzs8QWt7+64UMrA==}

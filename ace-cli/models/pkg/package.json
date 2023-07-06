@@ -1,6 +1,6 @@
 {
   "name": "@tecace/model-pkg",
-  "version": "0.0.4",
+  "version": "0.0.6",
   "description": "package抽象类",
   "keywords": [],
   "main": "dist/cjs/index.js",
@@ -34,9 +34,9 @@
     "node": ">= 18.16.1 < 19.0.0"
   },
   "dependencies": {
-    "@tecace/ace-log": "^0.0.4",
-    "@tecace/npm-info": "^0.0.4",
-    "@tecace/path": "^0.0.4",
+    "@tecace/ace-log": "^0.0.6",
+    "@tecace/npm-info": "^0.0.6",
+    "@tecace/path": "^0.0.6",
     "npminstall": "^7.9.0",
     "pkg-dir": "4.2.0"
   }

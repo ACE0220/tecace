@@ -1,6 +1,6 @@
 {
   "name": "@tecace/command-exec",
-  "version": "0.0.5",
+  "version": "0.0.9",
   "description": "命令业务逻辑与核心模块交互的中间模块",
   "keywords": [],
   "main": "dist/cjs/index.js",
@@ -34,9 +34,9 @@
     "node": ">= 18.16.1 < 19.0.0"
   },
   "dependencies": {
-    "@tecace/ace-log": "^0.0.4",
-    "@tecace/model-command": "^0.0.4",
-    "@tecace/model-pkg": "^0.0.4",
-    "@tecace/npm-info": "^0.0.4"
+    "@tecace/ace-log": "^0.0.6",
+    "@tecace/model-command": "^0.0.6",
+    "@tecace/model-pkg": "^0.0.6",
+    "@tecace/npm-info": "^0.0.6"
   }
 }

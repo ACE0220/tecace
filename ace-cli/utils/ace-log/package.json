@@ -1,6 +1,6 @@
 {
   "name": "@tecace/ace-log",
-  "version": "0.0.4",
+  "version": "0.0.6",
   "description": "基于npmlog和colors集成的log工具",
   "keywords": [],
   "main": "dist/cjs/index.js",

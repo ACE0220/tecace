@@ -1,8 +1,11 @@
 {
   "name": "@tecace/ace-cli",
-  "version": "0.0.5",
+  "version": "0.0.9",
   "description": "cli核心模块",
   "keywords": [],
+  "main": "dist/cjs/index.js",
+  "module": "dist/cjs/index.js",
+  "types": "dist/types/src/index.d.ts",
   "publishConfig": {
     "access": "public"
   },
@@ -33,9 +36,9 @@
   },
   "dependencies": {
     "@rollup/plugin-alias": "^5.0.0",
-    "@tecace/ace-log": "^0.0.4",
-    "@tecace/command-exec": "^0.0.5",
-    "@tecace/npm-info": "^0.0.4",
+    "@tecace/ace-log": "^0.0.6",
+    "@tecace/command-exec": "^0.0.9",
+    "@tecace/npm-info": "^0.0.6",
     "colorette": "^2.0.20",
     "commander": "^11.0.0",
     "dotenv": "^16.3.1",

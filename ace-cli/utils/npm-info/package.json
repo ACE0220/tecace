@@ -1,6 +1,6 @@
 {
   "name": "@tecace/npm-info",
-  "version": "0.0.4",
+  "version": "0.0.6",
   "description": "基于semver和axios集成的npm工具，主要用于npm的版本对比，版本获取等",
   "keywords": [],
   "main": "dist/cjs/index.js",
@@ -31,9 +31,9 @@
     "README.md"
   ],
   "dependencies": {
-    "@tecace/ace-log": "^0.0.4",
-    "@tecace/request": "^0.0.4",
-    "@tecace/spinner": "^0.0.4",
+    "@tecace/ace-log": "^0.0.6",
+    "@tecace/request": "^0.0.6",
+    "@tecace/spinner": "^0.0.6",
     "axios": "^1.4.0",
     "semver": "^7.5.3"
   },
