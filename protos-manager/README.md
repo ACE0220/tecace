@@ -1,8 +1,8 @@
 # @tecace/protos-manager
 
-# 注意
+## 注意
 
-内部使用，请替换自己的的proto文件
+内部使用，先克隆再自行替换proto文件到src/protos下
 
 ## 描述
 
@@ -14,21 +14,39 @@
 - 提供api获取所有proto文件的package name
 - 提供api获取所有的proto文件绝对路径
 
-## 使用
+## 生成路径数组，包名数组和类型文件
 
 建议使用pnpm
 
-在protos-manager根目录
+在其他项目的根目录内执行以下命令，执行完成后可以移动protos-manager去其他位置（或不移动也行）
 
 ```sh
-pnpm install
+git clone --sparse git@github.com:ACE0220/tecace.git tecace
+cd tecace
+git sparse-checkout init --cone
+git sparse-checkout set protos-manager
 ```
 
+安装依赖
+
 ```sh
+# path/to/protos-manager
+pnpm install
+# or
+npm install
+```
+
+在tecace/protos-manager/src/protos替换自己所需的proto文件，执行以下命令
+
+```sh
+npm run build
+# of
 pnpm build
 ```
 
-在其他项目文件内，笔者使用的是 nestjs
+## 使用
+
+笔者的是 nestjs 项目
 
 ```proto
 syntax = "proto3";
@@ -63,7 +81,7 @@ service UserService {
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './modules/app/app.module';
 import { MicroserviceOptions, Transport } from '@nestjs/microservices';
-import { protosLoader } from '@acemall/protos';
+import { protosLoader } from '@tecace/protos-manager'; // 包名由使用者定义，修改/path/to/protos-manager/package.json中的name即可
 async function bootstrap() {
   const app = await NestFactory.createMicroservice<MicroserviceOptions>(
     AppModule,
