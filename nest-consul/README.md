@@ -4,7 +4,7 @@
 
 base on node-consul@1.2.0 https://www.npmjs.com/package/consul/v/1.2.0
 
-基于 node-consul 的 1.2.0 版本封装的 nestjs 版本，封装了服务和健康检查注册/注销，kv 存储操作等功能，绑定了自动注册服务/健康检查，可以手动注销服务和健康检查。
+基于 node-consul 的 1.2.0 版本封装的 nestjs 版本，封装了服务和健康检查注册/注销，kv 存储操作，获取其他服务的url等功能，绑定了自动注册服务/健康检查，可以手动注销服务和健康检查。
 
 # Documentation
 
@@ -19,6 +19,10 @@ pnpm add @tecace/nest-consul
 ## use
 
 这里只是核心的代码，当中还涉及了微服务的创建，运行等，参考官方文档 https://docs.nestjs.com/microservices/grpc#grpc
+
+### 注册module
+
+单独注册ConsulModule
 
 ```typescript
 // app.modules.ts or any.modules.ts
@@ -54,6 +58,56 @@ import { ConsulModule, ConsulService } from '@tecace/nest-consul';
   providers: [ConsulService], // 需要提供ConsulService，在AppController中才能使用consulService
 })
 export class AppModule {}
+```
+
+或在微服务ClientsModule中注册
+
+```typescript
+
+import { ClientsModule, Transport } from '@nestjs/microservices';
+
+// 省略部分代码
+ClientsModule.registerAsync([
+      {
+        imports: [
+          // 在微服务中注册ConsulModule
+          ConsulModule.register({
+            host: '10.211.55.14',
+            port: '8500',
+            promisify: true,
+            autoRegister: true,
+            registerOptions: {
+              id: 'category-service',
+              name: 'category-service',
+              port: 5002,
+              address: '192.168.31.117',
+            },
+            check: {
+              id: 'category_health_check',
+              name: 'category_health_check',
+              grpc: '192.168.31.117:5002',
+              interval: '15s',
+              ttl: '10s',
+            },
+          }),
+        ],
+        name: 'UserGrpcClient',
+        useFactory: async (consulSrv: ConsulService) => {
+          const url = await consulSrv.getServiceUrl('user-service'); // 在另外一个微服务中获取user-service注册相关的url，以便进行通信
+          return {
+            name: 'UserGrpcClient',
+            transport: Transport.GRPC,
+            options: {
+              url,
+              package: protosLoader.getPackages(),
+              protoPath: protosLoader.getProtos(),
+            },
+          };
+        },
+        inject: [ConsulService],
+      },
+    ]),
+// 省略部分代码
 ```
 
 ```typescript
@@ -203,4 +257,24 @@ const [err, res] = await consulService.kvGet({
   dc: 'datacenter in your defination',
   ...
 });
+```
+
+#### getService(serviceName?: string): Promise<[err: string, data: ConsulServiceList | ConsulServiceDetail | null]>;
+
+获取 service 列表或者service的详情，传了serviceName返回对应的详情，反之返回列表
+
+```typescript
+const [err, serviceList] = await consulSrv.getService();  // 返回列表
+
+const [err, serviceDetail] = await consulSrv.getService("user-service") // 返回详情
+```
+
+#### getServiceUrl(serviceName?: string): Promise<[err: string, data: ConsulServiceList | ConsulServiceDetail | null]>;
+
+获取 service 列表或者service的详情，传了serviceName返回对应的详情，反之返回列表
+
+```typescript
+const [err, url] = await consulSrv.getServiceUrl('user-service');
+// url host:port
+// err null
 ```

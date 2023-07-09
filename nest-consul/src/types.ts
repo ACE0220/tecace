@@ -13,3 +13,17 @@ export type InitOptions = ConsulOptions & {
 export type HealthCheckRegisterOptions = Consul.Agent.Check.RegisterOptions & {
   grpc?: string;
 };
+
+export type ConsulServiceDetail = {
+  ID: string;
+  Service: string;
+  Tags: Array<string>;
+  Meta: Record<any, any>;
+  Port: number | string;
+  Address: string;
+  Datacenter: string;
+};
+
+export type ConsulServiceList = {
+  [key: string]: ConsulServiceDetail;
+};
