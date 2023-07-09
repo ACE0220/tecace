@@ -1,6 +1,7 @@
-import { DynamicModule, Module } from '@nestjs/common';
+import { DynamicModule, Global, Module } from '@nestjs/common';
 import { ConsulService } from './consul.service';
 import { InitOptions } from './types';
+@Global()
 @Module({})
 export class ConsulModule {
   static register(consulOptions: InitOptions): DynamicModule {

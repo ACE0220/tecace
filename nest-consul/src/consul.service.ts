@@ -1,6 +1,6 @@
 import { Injectable, Inject } from '@nestjs/common';
 import Consul from 'consul';
-import { InitOptions } from './types';
+import { ConsulServiceDetail, ConsulServiceList, InitOptions } from './types';
 /**
  *
  * @api {} import 将模块导入到module
@@ -138,5 +138,37 @@ export class ConsulService {
       err = e;
     }
     return [err, res];
+  }
+
+  async getService(
+    serviceName?: string,
+  ): Promise<
+    [err: string, data: ConsulServiceList | ConsulServiceDetail | null]
+  > {
+    let err = null;
+    let res = null;
+    try {
+      const serviceList: any = await this.consul.agent.service.list();
+      if (!serviceName) {
+        res = serviceList;
+      } else if (serviceList[serviceName]) {
+        res = serviceList[serviceName];
+      } else {
+        res = null;
+      }
+    } catch (e) {
+      err = e;
+    }
+    return [err, res];
+  }
+
+  async getServiceUrl(
+    serviceName?: string,
+  ): Promise<[err: string, data: string | null]> {
+    const [err, service] = await this.getService(serviceName);
+    if (!err) {
+      return [err, `${service.Address}:${service.Port}`];
+    }
+    return [err, null];
   }
 }
