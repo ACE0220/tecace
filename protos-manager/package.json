@@ -1,6 +1,6 @@
 {
   "name": "@tecace/protos-manager",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "多服务间的proto解决方案，通过npm或git进行管理，支持基于proto文件生成对应类型",
   "author": "ace0220",
   "license": "MIT",
